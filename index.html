@@ -3,192 +3,214 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bingo Garden Journey</title>
-  <meta name="description" content="Bingo Garden Journey is a relaxing offline bingo game with 50 garden-themed solo levels.">
+  <meta name="description" content="Lucky Beach Bingo is a colorful offline solo bingo game with 50 relaxing levels, classic number calling, and star-based progress.">
+  <meta name="theme-color" content="#075985">
+  <title>Lucky Beach Bingo — Classic Bingo, Sunny Fun</title>
   <style>
     :root {
       color-scheme: light;
-      --green: #2f8f5b;
-      --leaf: #155d38;
-      --gold: #f7c948;
-      --cream: #fff8df;
-      --ink: #2e2116;
+      --sky: #0ea5e9;
+      --ocean: #075985;
+      --deep: #083344;
+      --sun: #facc15;
+      --coral: #fb7185;
+      --sand: #fff7d6;
+      --paper: rgba(255, 255, 255, .88);
+      --ink: #173344;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
       color: var(--ink);
-      background: linear-gradient(#dff8ff, #fff2c9 62%, #dff2ce);
+      background: linear-gradient(180deg, #dff7ff 0%, #fff8df 45%, #e6f7d9 100%);
+      font-family: ui-rounded, "Arial Rounded MT Bold", Arial, sans-serif;
+      line-height: 1.6;
     }
-    header {
-      min-height: 78vh;
+    a { color: inherit; }
+    .hero {
+      position: relative;
+      min-height: 92vh;
       display: grid;
       place-items: center;
+      overflow: hidden;
+      padding: 72px 22px;
       text-align: center;
-      padding: 56px 22px;
-      background:
-        linear-gradient(rgba(6, 72, 83, .08), rgba(255, 244, 203, .35)),
-        url("web/01_01_welcome_iphone.jpg") center/cover;
+      isolation: isolate;
+      background: url("AppStoreSubmission/web/02_02_play_iphone.jpg") center 36% / cover;
     }
-    .hero {
-      max-width: 920px;
-      padding: 24px;
-      border-radius: 28px;
-      background: rgba(255, 255, 255, .68);
-      box-shadow: 0 24px 70px rgba(44, 76, 31, .24);
-      backdrop-filter: blur(10px);
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(4, 44, 67, .44), rgba(4, 44, 67, .08) 45%, rgba(4, 44, 67, .55));
+      backdrop-filter: blur(3px);
     }
+    .hero-card {
+      width: min(860px, 100%);
+      padding: clamp(28px, 6vw, 58px);
+      border: 1px solid rgba(255, 255, 255, .6);
+      border-radius: 34px;
+      background: rgba(255, 255, 255, .78);
+      box-shadow: 0 30px 90px rgba(5, 59, 84, .34);
+      backdrop-filter: blur(18px);
+    }
+    .tiles { display: flex; justify-content: center; gap: 9px; margin-bottom: 24px; }
+    .tiles span {
+      width: 48px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 3px solid rgba(255, 255, 255, .85);
+      border-radius: 12px;
+      color: white;
+      font-size: 26px;
+      font-weight: 900;
+      text-shadow: 0 2px 0 rgba(55, 20, 5, .45);
+      box-shadow: 0 7px 0 rgba(70, 38, 10, .18);
+    }
+    .tiles span:nth-child(1) { background: #ef3340; }
+    .tiles span:nth-child(2) { background: #f59e0b; }
+    .tiles span:nth-child(3) { background: #84b916; }
+    .tiles span:nth-child(4) { background: #0d91d4; }
+    .tiles span:nth-child(5) { background: #9639bd; }
     h1 {
-      margin: 0 0 14px;
-      font-size: clamp(42px, 8vw, 86px);
-      line-height: .98;
-      color: #fff06f;
-      text-shadow: 0 5px 0 #8a5316, 0 12px 28px rgba(69, 33, 8, .36);
+      margin: 0;
+      color: #ffe76a;
+      font-size: clamp(50px, 9vw, 100px);
+      letter-spacing: -.055em;
+      line-height: .95;
+      text-shadow: 0 5px 0 #7a3d12, 0 14px 30px rgba(42, 24, 4, .28);
     }
     .tagline {
-      margin: 0 auto 26px;
-      max-width: 680px;
-      font-size: clamp(19px, 3vw, 30px);
+      max-width: 660px;
+      margin: 24px auto 30px;
+      color: var(--deep);
+      font-size: clamp(19px, 3vw, 28px);
       font-weight: 800;
-      color: var(--leaf);
     }
-    .actions {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
+    .actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 13px; }
     .button {
       display: inline-block;
       padding: 14px 22px;
       border-radius: 999px;
       color: white;
-      background: var(--green);
+      background: var(--ocean);
       text-decoration: none;
-      font-weight: 800;
-      box-shadow: 0 8px 18px rgba(24, 104, 67, .26);
+      font-weight: 900;
+      box-shadow: 0 10px 22px rgba(7, 89, 133, .24);
     }
-    .button.alt {
-      background: #b66a20;
-    }
-    main {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 58px 22px 72px;
-    }
-    section { margin: 0 0 62px; }
-    h2 {
-      margin: 0 0 22px;
-      font-size: clamp(28px, 4vw, 46px);
-      color: var(--leaf);
-    }
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-    }
+    .button.alt { color: #5d310c; background: var(--sun); }
+    main { width: min(1180px, calc(100% - 36px)); margin: 0 auto; padding: 80px 0; }
+    section { margin-bottom: 84px; }
+    .eyebrow { margin: 0 0 6px; color: #dc4867; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    h2 { margin: 0 0 22px; color: var(--ocean); font-size: clamp(34px, 5vw, 58px); line-height: 1.05; }
+    .intro { max-width: 800px; margin: 0 auto; text-align: center; }
+    .intro p { margin: 0; font-size: clamp(18px, 2vw, 22px); }
+    .features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
     .feature {
-      padding: 22px;
-      border-radius: 22px;
-      background: rgba(255, 255, 255, .72);
-      box-shadow: 0 16px 38px rgba(81, 105, 44, .14);
+      padding: 26px 22px;
+      border-radius: 24px;
+      background: var(--paper);
+      box-shadow: 0 18px 45px rgba(23, 76, 87, .12);
     }
-    .feature strong {
-      display: block;
-      margin-bottom: 8px;
-      color: #9b5a16;
-      font-size: 20px;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-    }
+    .feature b { display: block; margin-bottom: 7px; color: #9a4a0b; font-size: 21px; }
+    .section-heading { text-align: center; }
+    .gallery { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; align-items: start; }
     .gallery img {
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 22px;
-      box-shadow: 0 18px 42px rgba(45, 83, 45, .22);
-      background: var(--cream);
+      border: 1px solid rgba(255, 255, 255, .75);
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 20px 44px rgba(14, 63, 76, .2);
     }
-    .ipad-gallery {
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    .ipad-gallery { grid-template-columns: repeat(3, 1fr); }
+    .ipad-gallery img:nth-child(n+4) { transform: translateX(50%); }
+    footer { padding: 38px 20px; color: white; text-align: center; background: var(--deep); }
+    footer p { margin: 7px 0; }
+    footer a { color: #fde68a; font-weight: 800; }
+    @media (max-width: 900px) {
+      .features { grid-template-columns: repeat(2, 1fr); }
+      .gallery { grid-template-columns: repeat(2, 1fr); }
+      .gallery img:last-child { grid-column: 1 / -1; width: calc(50% - 8px); margin: auto; }
+      .ipad-gallery img:nth-child(n+4) { transform: none; }
     }
-    .copy {
-      max-width: 840px;
-      font-size: 18px;
-      line-height: 1.7;
-      background: rgba(255, 255, 255, .72);
-      border-radius: 22px;
-      padding: 26px;
-      box-shadow: 0 16px 38px rgba(81, 105, 44, .14);
+    @media (max-width: 560px) {
+      .hero { min-height: 82vh; }
+      .hero-card { border-radius: 26px; }
+      .tiles span { width: 40px; font-size: 22px; }
+      main { width: min(100% - 26px, 1180px); padding: 60px 0; }
+      section { margin-bottom: 64px; }
+      .features, .gallery, .ipad-gallery { grid-template-columns: 1fr; }
+      .gallery img:last-child { grid-column: auto; width: 100%; }
     }
-    footer {
-      padding: 32px 22px;
-      text-align: center;
-      background: rgba(21, 93, 56, .1);
-      color: var(--leaf);
-      font-weight: 700;
-    }
-    footer a { color: var(--leaf); }
   </style>
 </head>
 <body>
-  <header>
-    <div class="hero">
-      <h1>Bingo Garden Journey</h1>
-      <p class="tagline">A relaxing offline bingo adventure through a bright and blooming garden.</p>
+  <header class="hero">
+    <div class="hero-card">
+      <div class="tiles" aria-label="Bingo"><span>B</span><span>I</span><span>N</span><span>G</span><span>O</span></div>
+      <h1>Lucky Beach Bingo</h1>
+      <p class="tagline">Classic calls, colorful cards, and 50 relaxing solo levels—ready whenever you are.</p>
       <div class="actions">
-        <a class="button" href="#screenshots">View Screenshots</a>
+        <a class="button" href="#screenshots">See the Game</a>
         <a class="button alt" href="privacy.html">Privacy Policy</a>
       </div>
     </div>
   </header>
+
   <main>
-    <section>
-      <h2>Classic Bingo, Garden Style</h2>
-      <div class="copy">
-        <p>Bingo Garden Journey brings simple, cheerful bingo gameplay into a cozy flower garden. Follow the called numbers, mark your board, complete lines, and earn stars as you progress through solo levels.</p>
-        <p>The game is designed for quick sessions, offline play, and relaxed casual fun without requiring an account.</p>
-      </div>
+    <section class="intro">
+      <p class="eyebrow">Call. Match. Bingo.</p>
+      <h2>A cheerful take on classic bingo</h2>
+      <p>Follow each called number, mark the matching spaces, complete winning lines, and earn stars as you move through a bright solo journey. No account is required, and your progress stays on your device.</p>
     </section>
 
     <section>
-      <h2>Features</h2>
       <div class="features">
-        <div class="feature"><strong>50 Solo Levels</strong>Clear garden stages with gradually increasing goals and call limits.</div>
-        <div class="feature"><strong>Offline Play</strong>Enjoy bingo anytime with saved progress on your device.</div>
-        <div class="feature"><strong>Stars & Progress</strong>Replay levels, improve your score, and unlock more of the journey.</div>
-        <div class="feature"><strong>Warm Garden Theme</strong>Bright artwork, music, sound effects, and friendly controls.</div>
+        <article class="feature"><b>50 Solo Levels</b>Clear focused goals with gradually increasing challenges.</article>
+        <article class="feature"><b>Classic Gameplay</b>Match called numbers and complete rows, columns, or diagonals.</article>
+        <article class="feature"><b>Stars & Progress</b>Replay levels, improve results, and unlock the journey.</article>
+        <article class="feature"><b>Offline Friendly</b>Enjoy a quick bingo break without creating an account.</article>
       </div>
     </section>
 
     <section id="screenshots">
-      <h2>iPhone Preview</h2>
+      <div class="section-heading">
+        <p class="eyebrow">Made for iPhone</p>
+        <h2>Bingo at a glance</h2>
+      </div>
       <div class="gallery">
-        <img src="web/01_01_welcome_iphone.jpg" alt="Bingo Garden Journey welcome screen">
-        <img src="web/02_02_play_iphone.jpg" alt="Classic bingo gameplay">
-        <img src="web/03_03_mark_iphone.jpg" alt="Mark numbers on the bingo board">
-        <img src="web/04_04_levels_iphone.jpg" alt="Solo level challenge">
-        <img src="web/05_05_rewards_iphone.jpg" alt="Level clear and rewards">
+        <img src="AppStoreSubmission/web/01_01_welcome_iphone.jpg" alt="Lucky Beach Bingo with 50 solo levels" loading="lazy">
+        <img src="AppStoreSubmission/web/02_02_play_iphone.jpg" alt="Classic bingo gameplay on iPhone" loading="lazy">
+        <img src="AppStoreSubmission/web/03_03_mark_iphone.jpg" alt="Marked bingo numbers on iPhone" loading="lazy">
+        <img src="AppStoreSubmission/web/04_04_levels_iphone.jpg" alt="Bingo line challenge on iPhone" loading="lazy">
+        <img src="AppStoreSubmission/web/05_05_rewards_iphone.jpg" alt="Offline solo bingo on iPhone" loading="lazy">
       </div>
     </section>
 
     <section>
-      <h2>iPad Preview</h2>
+      <div class="section-heading">
+        <p class="eyebrow">Made for iPad</p>
+        <h2>A big, clear bingo board</h2>
+      </div>
       <div class="gallery ipad-gallery">
-        <img src="web/01_01_welcome_ipad.jpg" alt="Bingo Garden Journey on iPad">
-        <img src="web/02_02_play_ipad.jpg" alt="Bingo gameplay on iPad">
-        <img src="web/03_03_mark_ipad.jpg" alt="Marked bingo board on iPad">
-        <img src="web/04_04_levels_ipad.jpg" alt="Garden bingo levels on iPad">
-        <img src="web/05_05_rewards_ipad.jpg" alt="Offline bingo play on iPad">
+        <img src="AppStoreSubmission/web/01_01_welcome_ipad.jpg" alt="Lucky Beach Bingo on iPad" loading="lazy">
+        <img src="AppStoreSubmission/web/02_02_play_ipad.jpg" alt="Classic bingo gameplay on iPad" loading="lazy">
+        <img src="AppStoreSubmission/web/03_03_mark_ipad.jpg" alt="Marked bingo card on iPad" loading="lazy">
+        <img src="AppStoreSubmission/web/04_04_levels_ipad.jpg" alt="Bingo challenge on iPad" loading="lazy">
+        <img src="AppStoreSubmission/web/05_05_rewards_ipad.jpg" alt="Offline solo bingo on iPad" loading="lazy">
       </div>
     </section>
   </main>
+
   <footer>
+    <p><strong>Lucky Beach Bingo</strong></p>
     <p>Support: <a href="mailto:508923216@qq.com">508923216@qq.com</a> · <a href="privacy.html">Privacy Policy</a></p>
+    <p>© 2026 Lucky Beach Bingo. All rights reserved.</p>
   </footer>
 </body>
 </html>
